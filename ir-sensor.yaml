@@ -1,0 +1,61 @@
+esphome:
+  name: cigarette-counter
+
+esp8266:
+  board: nodemcuv2
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  - platform: esphome
+    password: ""
+
+wifi:
+  ssid: <your_wifi_ssid>
+  password: <your_wifi_password>
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Cigarette-Counter"
+    password: <create_a_random_password>
+
+captive_portal:
+
+time:
+  - platform: sntp
+
+binary_sensor:
+  - platform: gpio
+    pin: D0
+    name: "Cigarette Proximity Sensor"
+    filters:
+      - delayed_on: 5000ms
+
+i2c:
+  scl: D1
+  sda: D2
+
+sensor:
+  - platform: homeassistant
+    id: ha_cig_count
+    entity_id: counter.cigarette_s_smoked
+    internal: true    
+
+display:
+  - platform: lcd_pcf8574
+    dimensions: 16x2
+    update_interval: 0.1s
+    address: 0x27
+    lambda: |-
+      const int cig     = (int) id(ha_cig_count).state;
+      const int minutes = cig * 20;
+      const int days    = minutes / 1440;
+      const int hours   = (minutes % 1440) / 60;
+
+      // Line 1 – straight count
+      it.printf(0, 0, "Smoked:%5d", cig);
+
+      // Line 2 – “Farewell” meter
+      it.printf(0, 1, "Life Lost:%2dd%2dh", days, hours);
