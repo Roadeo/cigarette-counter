@@ -75,6 +75,8 @@ Keep track of every cigarette smoked and visualize the estimated **life‑time l
 
 7. Place the sensor where cigarettes are removed – each removal held >5 s will trigger a count.
 
+![Home Assistant Counter](./home-assistant-counter.png)
+
 ---
 
 ## How the “life lost” is computed
