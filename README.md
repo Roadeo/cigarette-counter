@@ -30,6 +30,8 @@ Keep track of every cigarette smoked and visualize the estimated **life‑time l
 2. **Review `cigarette-counter.yaml`** and replace:
 
    * `wifi:` SSID & password
+   * `fallback hotpost:` Password
+   * `Pins:` Check and change the pins as required
 
 3. **Flash** the NodeMCU with ESPHome:
 
