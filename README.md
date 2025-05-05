@@ -19,6 +19,7 @@ Keep track of every cigarette smoked and visualize the estimated **life‑time l
 
 ## Pinout view
 
+![Circuit Diagram](./circuit.png)
 
 ---
 
