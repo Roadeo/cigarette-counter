@@ -2,6 +2,8 @@
 
 Keep track of every cigarette smoked and visualize the estimated **life‑time lost** in real‑time on a 16×2 LCD. The node publishes its data to Home Assistant and displays a running counter locally.
 
+![Cigarette Counter](./cigarette-counter.png)
+
 ---
 
 ## ️Hardware
